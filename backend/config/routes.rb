@@ -12,6 +12,12 @@ Rails.application.routes.draw do
       post :register
       post :login
     end
+
+    resources :sweets, only: [:index] do
+      collection do
+        get :search
+      end
+    end
   end
 
 end
