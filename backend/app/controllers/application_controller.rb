@@ -18,4 +18,12 @@ class ApplicationController < ActionController::API
     render json: { error: 'Unauthorized' }, status: :unauthorized
     false
   end
+
+  def authorize_admin!
+    return if current_user&.admin?
+
+    render json: { error: 'Forbidden' }, status: :forbidden
+    false
+  end
+
 end
