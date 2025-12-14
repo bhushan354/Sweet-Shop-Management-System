@@ -1,7 +1,11 @@
 import api from './api'
 
-export const fetchSweets = async () => {
-  const response = await api.get('/sweets')
+export const fetchSweets = async (params = {}) => {
+  const hasFilters = Object.keys(params).length > 0
+
+  const url = hasFilters ? '/sweets/search' : '/sweets'
+  const response = await api.get(url, { params })
+
   return response.data
 }
 
