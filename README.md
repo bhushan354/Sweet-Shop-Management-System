@@ -155,7 +155,11 @@ Finished in 0.89919 seconds (files took 3.88 seconds to load)
 ```
 
 ---
-
+## 🖥️ User Interface Preview
+[Screencast from 2025-12-14 17-11-58.webm](https://github.com/user-attachments/assets/2b8794f0-f4c1-4135-9a2c-31c32bc528d7)
+<img width="1920" height="1080" alt="Screenshot from 2025-12-14 17-13-38" src="https://github.com/user-attachments/assets/407ff152-c24c-476f-8afc-2bfb1cc7224e" />
+<img width="1920" height="1080" alt="Screenshot from 2025-12-14 17-13-28" src="https://github.com/user-attachments/assets/55b8635b-47a0-4bb8-8ea3-c2751903a9e7" />
+<img width="1920" height="1080" alt="Screenshot from 2025-12-14 17-13-19" src="https://github.com/user-attachments/assets/e9d29d1c-8ae0-48f2-8e0f-07c41e5eb560" />
 
 
 ## 🤖 My AI Usage
@@ -213,7 +217,6 @@ Overall, AI helped me build this project more confidently, efficiently, and with
 
 ---
 
-
 ## 🙏 Thank You
 
 Thank you for taking the time to review my  project.
@@ -223,6 +226,8 @@ This assignment gave me an excellent opportunity to apply full-stack development
 I truly appreciate your time and consideration, and I look forward to hearing from you.
 
 — *Bhushan Deshmukh*
+
+---
 
 ## 📝 Contact Details
 
