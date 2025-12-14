@@ -21,7 +21,10 @@ module Api
 
       token = JwtService.encode(user_id: user.id)
 
-      render json: { token: token }, status: :ok
+      render json: { token: token, user: {
+        email: user.email,
+        role: user.role
+      } }, status: :ok
     rescue StandardError
       render json: { error: 'Invalid credentials' }, status: :unauthorized
     end
