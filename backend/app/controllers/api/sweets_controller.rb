@@ -4,7 +4,7 @@ module Api
     before_action :authorize_admin!, only: [:create, :update, :destroy, :restock]
 
     def index
-      sweets = Sweet.all
+      sweets = Sweet.order(created_at: :asc)
       render json: sweets, status: :ok
     end
 
