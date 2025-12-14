@@ -15,21 +15,15 @@ function Sweets() {
     loadSweets()
   }, [])
 
-  const buildQueryParams = (data) => {
-    return Object.fromEntries(
-      Object.entries(data).filter(
-        ([_, value]) => value !== '' && value !== null
-      )
+  const buildQueryParams = (data) =>
+    Object.fromEntries(
+      Object.entries(data).filter(([_, v]) => v !== '' && v !== null)
     )
-  }
 
   const loadSweets = async (customFilters = filters) => {
     setLoading(true)
-
-    const queryParams = buildQueryParams(customFilters)
-
     try {
-      const data = await fetchSweets(queryParams)
+      const data = await fetchSweets(buildQueryParams(customFilters))
       setSweets(data)
     } finally {
       setLoading(false)
@@ -41,9 +35,7 @@ function Sweets() {
     loadSweets()
   }
 
-  if (loading) {
-    return <p className="text-center mt-5">Loading sweets...</p>
-  }
+  if (loading) return <p className="text-center mt-5">Loading sweets...</p>
 
   return (
     <div className="container py-4">
@@ -53,90 +45,48 @@ function Sweets() {
       <div className="card mb-4 shadow-sm">
         <div className="card-body">
           <div className="row g-3">
-            <div className="col-md-3">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Search by name"
-                value={filters.name}
-                onChange={(e) =>
-                  setFilters({ ...filters, name: e.target.value })
-                }
-              />
-            </div>
-
-            <div className="col-md-3">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Category"
-                value={filters.category}
-                onChange={(e) =>
-                  setFilters({ ...filters, category: e.target.value })
-                }
-              />
-            </div>
-
-            <div className="col-md-2">
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Min ₹"
-                value={filters.min_price}
-                onChange={(e) =>
-                  setFilters({ ...filters, min_price: e.target.value })
-                }
-              />
-            </div>
-
-            <div className="col-md-2">
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Max ₹"
-                value={filters.max_price}
-                onChange={(e) =>
-                  setFilters({ ...filters, max_price: e.target.value })
-                }
-              />
-            </div>
-
-            <div className="col-md-2 d-grid">
-              <button
-                className="btn btn-dark"
-                onClick={() => loadSweets()}
-              >
-                Apply
-              </button>
-
-              <button
-                className="btn btn-outline-secondary mt-2"
-                onClick={() => {
-                  const empty = {
-                    name: '',
-                    category: '',
-                    min_price: '',
-                    max_price: ''
+            {['name', 'category'].map((f) => (
+              <div className="col-md-3" key={f}>
+                <input
+                  className="form-control"
+                  placeholder={f}
+                  value={filters[f]}
+                  onChange={(e) =>
+                    setFilters({ ...filters, [f]: e.target.value })
                   }
-                  setFilters(empty)
-                  loadSweets(empty)
-                }}
-              >
-                Reset
+                />
+              </div>
+            ))}
+            {['min_price', 'max_price'].map((f) => (
+              <div className="col-md-2" key={f}>
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder={f}
+                  value={filters[f]}
+                  onChange={(e) =>
+                    setFilters({ ...filters, [f]: e.target.value })
+                  }
+                />
+              </div>
+            ))}
+            <div className="col-md-2 d-grid">
+              <button className="btn btn-dark" onClick={() => loadSweets()}>
+                Apply
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Sweets Grid */}
+      {/* Grid */}
       <div className="row">
         {sweets.map((sweet) => (
           <div className="col-md-4 mb-4" key={sweet.id}>
             <div className="card h-100 shadow-sm">
               <div className="card-body">
-                <h5 className="card-title">{sweet.name}</h5>
-                <p className="card-text text-muted">{sweet.category}</p>
+                <h5>{sweet.name}</h5>
+                <p className="text-muted">{sweet.category}</p>
                 <p>₹ {sweet.price}</p>
                 <p>Stock: {sweet.quantity}</p>
 
