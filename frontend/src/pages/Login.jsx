@@ -15,7 +15,7 @@ function Login() {
     try {
       const data = await login({ email, password })
       localStorage.setItem('token', data.token)
-      localStorage.setItem('role', data.role)
+      localStorage.setItem('role', data.user.role)
       navigate('/sweets')
     } catch {
       setError('Invalid email or password')
