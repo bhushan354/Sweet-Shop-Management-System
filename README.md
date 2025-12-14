@@ -182,7 +182,6 @@ AI tools were used thoughtfully throughout the development of this project to im
   - Improve UI/UX structure using Bootstrap classes
   - Review code for best practices and readability
 - AI was also helpful in:
-  - Planning Dockerization (Dockerfile, docker-compose)
   - Refining commit practices and project organization
 
 ### ✍️ Reflection on AI Impact
