@@ -1,5 +1,7 @@
 module Api
   class SweetsController < ApplicationController
+    before_action :authenticate_user, only: [:purchase]
+
     def index
       sweets = Sweet.all
       render json: sweets, status: :ok
@@ -15,6 +17,10 @@ module Api
 
       render json: sweets, status: :ok
     end
+
+    def purchase
+      InventoryService.purchase(params[:id], params[:amount].to_i)
+      render json: { message: 'Purchase successful' }, status: :ok
+    end
   end
 end
-
