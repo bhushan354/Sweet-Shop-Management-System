@@ -31,7 +31,7 @@ function Admin() {
   }
 
   return (
-    <div className="container py-5">
+    <div className="container py-4">
       <h2 className="mb-3 text-center">🛠 Admin Dashboard</h2>
 
       {/* Add Sweet */}
