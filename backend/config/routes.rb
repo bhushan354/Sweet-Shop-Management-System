@@ -13,13 +13,14 @@ Rails.application.routes.draw do
       post :login
     end
 
-    resources :sweets, only: [:index] do
+    resources :sweets, only: [:index, :create, :update, :destroy] do
       collection do
         get :search
       end
      
       member do
         post :purchase
+        post :restock
       end
     end
   end
